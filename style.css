@@ -704,7 +704,7 @@ a {
 
 
     .hero__logo {
-    width: clamp(80px, 10vw, 140px);
+    width: clamp(50px, 5vw, 80px);
     height: auto;
     margin-bottom: 20px;
 }
