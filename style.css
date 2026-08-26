@@ -464,7 +464,7 @@ a {
 
 .motorista__bio,
 .motorista__atendimento {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 400;
     line-height: 1.75;
     color: rgba(255, 255, 255, 0.94);
@@ -819,7 +819,7 @@ a {
 .motorista__atendimento {
     width: 100%;
 
-    font-size: 0.9rem;
+    font-size: 1.1rem;
 
     line-height: 1.7;
 
