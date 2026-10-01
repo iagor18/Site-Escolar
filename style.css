@@ -1,8 +1,16 @@
 /* =========================================================
+   IFMG NEVES TRANSPORTE
+   MOBILE FIRST
+========================================================= */
+
+
+/* =========================================================
    RESET
 ========================================================= */
 
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -13,20 +21,29 @@ html {
 }
 
 body {
+    width: 100%;
+    min-width: 0;
+
     font-family: "Poppins", sans-serif;
-    color: #ffffff;
-    background: #ffffff;
+
+    background: #f4f8f5;
+    color: #17201b;
+
     line-height: 1.6;
+
+    overflow-x: hidden;
 }
 
 img {
     display: block;
+
     max-width: 100%;
 }
 
 a {
-    text-decoration: none;
     color: inherit;
+
+    text-decoration: none;
 }
 
 
@@ -35,173 +52,184 @@ a {
 ========================================================= */
 
 :root {
+    --verde: #087a39;
     --verde-principal: #005c2a;
-    --verde-escuro: #002712;
-    --verde-profundo: #001b0d;
-    --verde-medio: #087a39;
+    --verde-escuro: #00391b;
+    --verde-profundo: #001f0f;
+
     --verde-claro: #eaf6ef;
 
     --branco: #ffffff;
-    --cinza-claro: #f5f7f6;
-    --cinza: #d9dfdb;
-    --texto: #222222;
-    --texto-suave: #5c665f;
 
-    --whatsapp: #119b43;
+    --texto: #17201b;
+    --texto-suave: #667069;
 
-    --sombra: 0 10px 30px rgba(0, 45, 22, 0.12);
-    --sombra-hover: 0 18px 40px rgba(0, 45, 22, 0.18);
+    --whatsapp: #18ad50;
+    --whatsapp-hover: #119342;
 
-    --largura: 1100px;
+    --largura: 1180px;
+
+    --padding-mobile: 20px;
+
+    --sombra:
+        0 15px 40px rgba(0, 45, 22, 0.12);
+
+    --sombra-forte:
+        0 25px 65px rgba(0, 35, 17, 0.18);
 }
 
 
 /* =========================================================
    HERO
+   MOBILE
 ========================================================= */
 
 .hero {
     position: relative;
 
-    min-height: 480px;
+    width: 100%;
+    min-height: 420px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
+    background:
+        url("FotosPerfil/ifmgCapa.webp")
+        center center / cover no-repeat;
+
     overflow: hidden;
+}
+
+
+/* camada escura */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
 
     background:
         linear-gradient(
-            rgba(11, 232, 110, 0.82),
-            rgba(0, 45, 20, 0.90)
-        ),
-        url("https://placehold.co/1600x800/164d2d/ffffff?text=IFMG+NEVES")
-        center / cover no-repeat;
+            180deg,
+            rgba(0, 30, 14, 0.55) 0%,
+            rgba(0, 45, 21, 0.72) 55%,
+            rgba(0, 25, 12, 0.90) 100%
+        );
+
+    z-index: 1;
 }
 
 
-/* efeito escuro nas laterais */
+/* iluminação */
 
-.hero::before {
+.hero::after {
     content: "";
 
     position: absolute;
-    inset: 0;
+
+    top: -260px;
+    left: 50%;
+
+    width: 520px;
+    height: 520px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
 
     background:
         radial-gradient(
-            circle at center,
-            transparent 0%,
-            rgba(0, 30, 14, 0.45) 100%
+            circle,
+            rgba(74, 255, 153, 0.16),
+            transparent 70%
         );
+
+    z-index: 1;
+
+    pointer-events: none;
 }
 
-
-/* conteúdo do hero */
 
 .hero__overlay {
     position: relative;
-    z-index: 1;
-
-    width: min(90%, var(--largura));
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    padding: 60px 20px;
-}
-
-
-/* logo */
-
-.hero {
-    position: relative;
+    z-index: 2;
 
     width: 100%;
-    height: 35vh;
-    min-height: 680px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 55px var(--padding-mobile);
 
-    overflow: hidden;
-
-    background-image:
-        url("FotosPerfil/ifmgCapa.webp");
-
-    background-size: cover;
-    background-position: bottom;
-    background-repeat: no-repeat;
-}
-
-.hero::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background: rgba(0, 45, 20, 0.9);
-
-    z-index: 1;
-}
-
-.hero__overlay {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     text-align: center;
 }
 
-
-/* título */
 
 .hero__title {
-    position: relative;
-
     width: 100%;
-    max-width: 1200px;
+    max-width: 850px;
 
-    margin: 0;
-    padding: 0 20px;
-
-    font-size: clamp(1.7rem, 4vw, 3.2rem);
-    font-weight: 700;
-
-    letter-spacing: 3px;
-    line-height: 1.2;
+    margin: 0 auto;
 
     color: #ffffff;
 
-    text-align: center;
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+    font-weight: 800;
+
+    line-height: 1.1;
+    letter-spacing: -0.8px;
 
     text-wrap: balance;
 
     text-shadow:
-        0 3px 10px rgba(0, 0, 0, 0.35);
+        0 5px 25px rgba(0, 0, 0, 0.35);
 }
 
 
-/* pequena linha decorativa */
+.hero__title::before {
+    content: "TRANSPORTE • IFMG NEVES";
+
+    display: block;
+
+    width: fit-content;
+
+    margin: 0 auto 20px;
+
+    padding: 7px 13px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.30);
+
+    border-radius: 50px;
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    color:
+        rgba(255, 255, 255, 0.95);
+
+    font-size: 0.62rem;
+    font-weight: 600;
+
+    letter-spacing: 1.6px;
+
+    text-shadow: none;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
 
 .hero__title::after {
     content: "";
 
     display: block;
 
-    width: 80px;
-    height: 4px;
+    width: 52px;
+    height: 3px;
 
     margin: 22px auto 0;
 
-    border-radius: 10px;
+    border-radius: 50px;
 
     background: #ffffff;
 }
@@ -209,154 +237,246 @@ a {
 
 /* =========================================================
    APRESENTAÇÃO
+   MOBILE
 ========================================================= */
 
 .apresentacao {
-    background: #ffffff;
+    width: 100%;
 
-    padding: 70px 20px;
+    padding:
+        60px
+        var(--padding-mobile)
+        70px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f7faf8 100%
+        );
 }
 
 
 .apresentacao__container {
-    width: min(100%, var(--largura));
+    width: 100%;
+    max-width: var(--largura);
 
     margin: 0 auto;
 
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    display: flex;
+    flex-direction: column;
 
-    align-items: center;
-
-    gap: 55px;
+    gap: 32px;
 }
 
-
-/* imagem */
 
 .apresentacao__imagem {
     width: 100%;
-    height: 320px;
+    height: auto;
+
+    aspect-ratio: 16 / 10;
 
     object-fit: cover;
 
-    border-radius: 14px;
+    border-radius: 18px;
 
-    box-shadow: var(--sombra);
-
-    transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease;
+    box-shadow:
+        0 18px 45px rgba(0, 42, 20, 0.15);
 }
 
-
-.apresentacao__imagem:hover {
-    transform: translateY(-5px);
-
-    box-shadow: var(--sombra-hover);
-}
-
-
-/* texto */
 
 .apresentacao__texto {
+    position: relative;
+
+    width: 100%;
+
+    padding-left: 19px;
+
     color: var(--texto);
 }
 
 
+.apresentacao__texto::before {
+    content: "";
+
+    position: absolute;
+
+    top: 4px;
+    bottom: 4px;
+    left: 0;
+
+    width: 3px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            var(--verde),
+            var(--verde-principal)
+        );
+}
+
+
 .apresentacao__texto h2 {
-    position: relative;
+    margin-bottom: 15px;
 
-    color: var(--verde-principal);
+    color: var(--verde-escuro);
 
-    font-size: clamp(1.7rem, 3vw, 2.3rem);
-
-    margin-bottom: 14px;
-
+    font-size: clamp(1.55rem, 7vw, 1.95rem);
     font-weight: 800;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.7px;
+
+    text-wrap: balance;
+}
+
+
+.apresentacao__texto h2::before {
+    content: "NOSSO DESTINO";
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: var(--verde);
+
+    font-size: 0.65rem;
+    font-weight: 700;
+
+    letter-spacing: 1.8px;
 }
 
 
 .apresentacao__texto h2::after {
-    content: "";
-
-    display: block;
-
-    width: 55px;
-    height: 4px;
-
-    margin-top: 10px;
-
-    border-radius: 10px;
-
-    background: var(--verde-medio);
+    display: none;
 }
 
 
 .apresentacao__texto p {
     color: var(--texto-suave);
 
-    font-size: 1.05rem;
+    font-size: 0.93rem;
+
+    line-height: 1.75;
 }
 
 
 /* =========================================================
    EQUIPE
+   MOBILE
 ========================================================= */
 
 .equipe {
     position: relative;
 
-    padding: 75px 20px 90px;
+    width: 100%;
+
+    padding:
+        65px
+        var(--padding-mobile)
+        75px;
 
     background:
         linear-gradient(
-            rgba(2, 39, 19, 0.96),
-            rgba(0, 43, 19, 0.98)
+            145deg,
+            #001c0d 0%,
+            #00351a 48%,
+            #002411 100%
         );
 
     overflow: hidden;
 }
 
 
-/* textura/efeito decorativo */
-
 .equipe::before {
     content: "";
 
     position: absolute;
-    inset: 0;
+
+    top: -250px;
+    right: -280px;
+
+    width: 550px;
+    height: 550px;
+
+    border-radius: 50%;
 
     background:
         radial-gradient(
-            circle at 10% 20%,
-            rgba(255, 255, 255, 0.04),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 90% 80%,
-            rgba(255, 255, 255, 0.035),
-            transparent 35%
+            circle,
+            rgba(39, 198, 105, 0.14),
+            transparent 68%
         );
 
     pointer-events: none;
 }
 
 
+.equipe::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: -300px;
+    left: -250px;
+
+    width: 550px;
+    height: 550px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(52, 211, 120, 0.08),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+/* título da seção */
+
 .equipe__titulo {
     position: relative;
+    z-index: 2;
+
+    width: 100%;
+
+    margin-bottom: 42px;
+
+    padding: 0 5px;
+
+    color: #ffffff;
 
     text-align: center;
 
-    font-size: clamp(1.5rem, 3vw, 2rem);
-
+    font-size: clamp(1.65rem, 7vw, 2rem);
     font-weight: 800;
 
-    letter-spacing: 1px;
+    line-height: 1.15;
 
-    margin-bottom: 55px;
+    letter-spacing: -0.5px;
+}
 
-    color: #ffffff;
+
+.equipe__titulo::before {
+    content: "CONHEÇA QUEM FAZ A ROTA";
+
+    display: block;
+
+    margin-bottom: 11px;
+
+    color: #78e3a5;
+
+    font-size: 0.61rem;
+    font-weight: 600;
+
+    letter-spacing: 1.6px;
 }
 
 
@@ -365,79 +485,130 @@ a {
 
     display: block;
 
-    width: 65px;
-    height: 4px;
+    width: 48px;
+    height: 3px;
 
-    margin: 14px auto 0;
+    margin: 15px auto 0;
 
-    border-radius: 10px;
+    border-radius: 20px;
 
-    background: #ffffff;
+    background: #35d77c;
 }
 
+
+/* =========================================================
+   LISTA
+========================================================= */
 
 .equipe__lista {
     position: relative;
+    z-index: 2;
 
-    width: min(100%, 1050px);
+    width: 100%;
+    max-width: var(--largura);
 
     margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 22px;
 }
 
 
 /* =========================================================
-   CARD DO MOTORISTA
+   CARD MOTORISTA
+   MOBILE
 ========================================================= */
 
 .motorista {
-    display: grid;
+    position: relative;
 
-    grid-template-columns: 190px 1fr;
+    width: 100%;
+    min-width: 0;
 
-    gap: 30px;
+    display: flex;
+    flex-direction: column;
 
-    padding: 25px 0;
+    align-items: center;
 
-    transition:
-        transform 0.3s ease;
+    gap: 24px;
+
+    /*
+        Padding lateral propositalmente maior.
+        O conteúdo não fica encostado nas bordas.
+    */
+    padding:
+        30px
+        24px
+        26px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.10);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.105),
+            rgba(255, 255, 255, 0.055)
+        );
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.17);
+
+    overflow: hidden;
 }
 
 
-.motorista:hover {
-    transform: translateX(5px);
+/* detalhe verde */
+
+.motorista::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 48px;
+    height: 4px;
+
+    transform: translateX(-50%);
+
+    border-radius:
+        0
+        0
+        8px
+        8px;
+
+    background: #35d77c;
 }
 
 
 /* =========================================================
-   FOTO DO MOTORISTA
+   FOTO MOTORISTA
 ========================================================= */
 
 .motorista__foto {
-    width: 190px;
-    height: 190px;
+    width: 150px;
+    height: 150px;
+
+    flex-shrink: 0;
 
     object-fit: cover;
+    object-position: center;
 
-    border-radius: 12px;
+    border:
+        3px solid rgba(255, 255, 255, 0.92);
 
-    border: 3px solid rgba(255, 255, 255, 0.9);
-
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.22);
+    border-radius: 50%;
 
     background: #eeeeee;
 
-    transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease;
-}
-
-
-.motorista:hover .motorista__foto {
-    transform: scale(1.025);
-
     box-shadow:
-        0 12px 30px rgba(0, 0, 0, 0.3);
+        0 13px 32px rgba(0, 0, 0, 0.28);
 }
 
 
@@ -446,463 +617,339 @@ a {
 ========================================================= */
 
 .motorista__info {
+    width: 100%;
+    min-width: 0;
+
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
 
-    min-width: 0;
-    margin-bottom: 12px;
-}
-
-
-.motorista__nome {
-    font-size: 1.2rem;
-    font-weight: 700;
-    letter-spacing: 0.3px;
-    margin-bottom: 12px;
-}
-
-.motorista__bio,
-.motorista__atendimento {
-    font-size: 1.3rem;
-    font-weight: 400;
-    line-height: 1.75;
-    color: rgba(255, 255, 255, 0.94);
-
-    margin-bottom: 12px;
-}
-
-
-/* Destaque para "ATENDIMENTO:" */
-.motorista__atendimento strong {
-    color: #ffffff;
-
-    font-weight: 800;
-
-    letter-spacing: 0.3px;
+    align-items: stretch;
 }
 
 
 /* =========================================================
-   BOTÃO WHATSAPP
+   NOME
+========================================================= */
+
+.motorista__nome {
+    width: 100%;
+
+    margin-bottom: 25px;
+
+    color: #ffffff;
+
+    font-size: 1.22rem;
+    font-weight: 700;
+
+    line-height: 1.25;
+
+    text-align: center;
+
+    overflow-wrap: break-word;
+}
+
+
+.motorista__nome::after {
+    content: "";
+
+    display: block;
+
+    width: 38px;
+    height: 3px;
+
+    margin: 12px auto 0;
+
+    border-radius: 10px;
+
+    background: #35d77c;
+}
+
+
+/* =========================================================
+   BIO
+========================================================= */
+
+.motorista__bio {
+    width: 100%;
+    min-width: 0;
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255, 255, 255, 0.79);
+
+    font-size: 0.89rem;
+    font-weight: 400;
+
+    line-height: 1.75;
+
+    text-align: left;
+
+    white-space: normal;
+
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+
+
+/* =========================================================
+   ATENDIMENTO
+========================================================= */
+
+.motorista__atendimento {
+    width: 100%;
+    min-width: 0;
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255, 255, 255, 0.88);
+
+    font-size: 0.89rem;
+    font-weight: 400;
+
+    line-height: 1.75;
+
+    text-align: left;
+
+    white-space: normal;
+
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+
+
+.motorista__atendimento strong {
+    color: #71e5a3;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   WHATSAPP
 ========================================================= */
 
 .botao-whatsapp {
-    display: inline-flex;
+    width: 100%;
+
+    min-height: 48px;
+
+    display: flex;
 
     align-items: center;
     justify-content: center;
 
-    min-height: 34px;
+    gap: 10px;
 
-    padding: 7px 17px;
+    margin-top: 5px;
 
-    margin-top: 8px;
+    padding:
+        11px
+        16px;
 
-    border-radius: 50px;
-
-    background: var(--whatsapp);
-
-    color: #ffffff;
-
-    font-size: 1rem;
-
-    font-weight: 700;
-
-    box-shadow:
-        0 5px 15px rgba(0, 0, 0, 0.18);
-
-    transition:
-        transform 0.25s ease,
-        background 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-
-.botao-whatsapp:hover {
-    background: #20bd5a;
-
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.25);
-}
-
-
-.botao-whatsapp:active {
-    transform: translateY(0);
-}
-
-
-/* =========================================================
-   DIVISORES
-========================================================= */
-
-.divisor {
-    border: 0;
-
-    height: 1px;
-
-    margin: 5px 0;
+    border-radius: 12px;
 
     background:
         linear-gradient(
-            to right,
-            rgba(255, 255, 255, 0.55),
-            rgba(255, 255, 255, 0.15),
-            rgba(255, 255, 255, 0.55)
+            135deg,
+            #18b653,
+            #109544
         );
+
+    color: #ffffff;
+
+    font-size: 0.88rem;
+    font-weight: 700;
+
+    text-align: center;
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.20);
+}
+
+
+.botao-whatsapp::before {
+    content: "";
+
+    width: 8px;
+    height: 8px;
+
+    flex: 0 0 8px;
+
+    border-radius: 50%;
+
+    background: #b7ffd0;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(183, 255, 208, 0.12);
+}
+
+
+.divisor {
+    display: none;
 }
 
 
 /* =========================================================
    MAPA
+   MOBILE
 ========================================================= */
 
 .mapa {
-    padding: 70px 20px;
+    width: 100%;
 
-    background: #ffffff;
+    padding:
+        65px
+        var(--padding-mobile);
+
+    background:
+        linear-gradient(
+            180deg,
+            #f6f9f7 0%,
+            #ffffff 100%
+        );
+}
+
+
+.mapa::before {
+    content: "LOCALIZAÇÃO";
+
+    display: block;
+
+    width: 100%;
+    max-width: var(--largura);
+
+    margin: 0 auto 10px;
+
+    color: var(--verde-principal);
+
+    font-size: 0.64rem;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    text-align: center;
+}
+
+
+.mapa::after {
+    content: "IFMG Campus Ribeirão das Neves";
+
+    display: block;
+
+    width: 100%;
+    max-width: var(--largura);
+
+    margin:
+        0
+        auto
+        30px;
+
+    color: var(--verde-escuro);
+
+    font-size: clamp(1.55rem, 7vw, 1.9rem);
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.6px;
+
+    text-align: center;
 }
 
 
 .mapa__iframe {
     display: block;
 
-    width: min(100%, var(--largura));
+    width: 100%;
+    max-width: var(--largura);
 
-    height: 430px;
+    height: 310px;
 
     margin: 0 auto;
 
     border: 0;
 
-    border-radius: 14px;
+    border-radius: 18px;
 
-    box-shadow: var(--sombra);
+    box-shadow:
+        0 20px 50px rgba(0, 45, 22, 0.14);
 }
 
 
 /* =========================================================
    FOOTER
+   MOBILE
 ========================================================= */
 
 .rodape {
-    min-height: 80px;
+    width: 100%;
+    min-height: 90px;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    padding: 20px;
-
-    text-align: center;
+    padding:
+        24px
+        var(--padding-mobile);
 
     background:
         linear-gradient(
             135deg,
-            #0b8302,
-            #000000
+            #00170b,
+            #00331a
         );
 
+    border-top:
+        1px solid rgba(255, 255, 255, 0.08);
+
     color: #ffffff;
+
+    text-align: center;
 }
 
 
 .rodape p {
-    font-size: 1rem;
+    color:
+        rgba(255, 255, 255, 0.65);
 
-    opacity: 0.95;
+    font-size: 0.7rem;
+
+    line-height: 1.6;
 }
 
 
 /* =========================================================
-   TABLET
+   CELULARES MUITO PEQUENOS
+   Até 359px
 ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 359px) {
 
-    .hero {
-        min-height: 400px;
+    :root {
+        --padding-mobile: 14px;
     }
-
-
-    .apresentacao {
-        padding: 55px 20px;
-    }
-
-
-    .apresentacao__container {
-        grid-template-columns: 1fr;
-
-        gap: 30px;
-    }
-
-
-    .apresentacao__imagem {
-        height: 300px;
-    }
-
-
-    .apresentacao__texto {
-        text-align: center;
-    }
-
-
-    .apresentacao__texto h2::after {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-
-    .equipe {
-        padding-top: 60px;
-    }
-
-
-    .motorista {
-        grid-template-columns: 160px 1fr;
-
-        gap: 25px;
-    }
-
-
-    .motorista__foto {
-        width: 160px;
-        height: 160px;
-    }
-
-
-    .mapa__iframe {
-        height: 380px;
-    }
-}
-
-
-/* =========================================================
-   CELULAR
-========================================================= */
-
-@media (max-width: 600px) {
-
-    body {
-        overflow-x: hidden;
-    }
-
-
-    /* ---------------- HERO ---------------- */
-
-    .hero {
-        min-height: 330px;
-    }
-
-
-    .hero__overlay {
-        padding: 45px 18px;
-    }
-
-
-    .hero__logo {
-    width: clamp(50px, 5vw, 80px);
-    height: auto;
-    margin-bottom: 20px;
-}
 
 
     .hero__title {
-        font-size: 1.45rem;
-
-        letter-spacing: 1.5px;
-    }
-
-
-    .hero__title::after {
-        width: 55px;
-
-        height: 3px;
-
-        margin-top: 17px;
-    }
-
-
-    /* ---------------- APRESENTAÇÃO ---------------- */
-
-    .apresentacao {
-        padding: 45px 18px;
-    }
-
-
-    .apresentacao__container {
-        gap: 25px;
-    }
-
-
-    .apresentacao__imagem {
-        height: 220px;
-
-        border-radius: 10px;
-    }
-
-
-    .apresentacao__texto h2 {
         font-size: 1.65rem;
     }
 
 
-    .apresentacao__texto p {
-        font-size: 0.95rem;
+    .apresentacao__texto {
+        padding-left: 16px;
     }
 
-
-    /* ---------------- EQUIPE ---------------- */
-
-    .equipe {
-        padding: 50px 18px 60px;
-    }
-
-
-    .equipe__titulo {
-        font-size: 1.4rem;
-
-        margin-bottom: 35px;
-    }
-
-
-    .equipe__titulo::after {
-        width: 50px;
-
-        height: 3px;
-    }
-
-
-    /* ---------------- MOTORISTA ---------------- */
 
     .motorista {
-        display: flex;
-
-        flex-direction: column;
-
-        align-items: center;
-
-        gap: 18px;
-
-        padding: 30px 0;
-
-        text-align: center;
-    }
-
-
-    .motorista:hover {
-        transform: none;
-    }
-
-
-    .motorista__foto {
-        width: 145px;
-        height: 145px;
-
-        border-radius: 50%;
-
-        border-width: 3px;
-    }
-
-
-    .motorista__info {
-        width: 100%;
-
-        align-items: center;
-    }
-
-
-.motorista__bio,
-.motorista__atendimento {
-    width: 100%;
-
-    font-size: 1.1rem;
-
-    line-height: 1.7;
-
-    margin-bottom: 18px;
-    
-}
-
-
-.motorista__nome {
-    font-size: 1.15rem;
-
-    margin-bottom: 10px;
-}
-
-
-    .botao-whatsapp {
-        min-height: 36px;
-
-        padding: 8px 18px;
-
-        font-size: 1rem;
-    }
-
-
-    .divisor {
-        margin: 0;
-    }
-
-
-    /* ---------------- MAPA ---------------- */
-
-    .mapa {
-        padding: 45px 15px;
-    }
-
-
-    .mapa__iframe {
-        height: 300px;
-
-        border-radius: 10px;
-    }
-
-
-    /* ---------------- FOOTER ---------------- */
-
-    .rodape {
-        min-height: 70px;
-
-        padding: 18px 15px;
-    }
-
-
-    .rodape p {
-        font-size: 0.7rem;
-
-        line-height: 1.5;
-    }
-}
-
-
-/* =========================================================
-   CELULARES PEQUENOS
-========================================================= */
-
-@media (max-width: 380px) {
-
-    .hero {
-        min-height: 300px;
-    }
-
-
-    .hero__title {
-        font-size: 1.25rem;
-    }
-
-
-    .hero__logo {
-        width: 100px;
-    }
-
-
-    .apresentacao__imagem {
-        height: 190px;
+        padding:
+            26px
+            18px
+            23px;
     }
 
 
@@ -912,21 +959,606 @@ a {
     }
 
 
-    .motorista__bio,
-    .motorista__atendimento {
-        font-size: 1.2rem;
-        margin-bottom: 18px;
+    .motorista__nome {
+        font-size: 1.1rem;
     }
 
 
-    .mapa__iframe {
-        height: 270px;
+    .motorista__bio,
+    .motorista__atendimento {
+        font-size: 0.84rem;
+
+        line-height: 1.7;
+    }
+
+
+    .botao-whatsapp {
+        padding-left: 12px;
+        padding-right: 12px;
+
+        font-size: 0.82rem;
     }
 }
 
 
 /* =========================================================
-   ACESSIBILIDADE / REDUÇÃO DE MOVIMENTO
+   CELULAR GRANDE
+   600px+
+========================================================= */
+
+@media (min-width: 600px) {
+
+    :root {
+        --padding-mobile: 28px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: 500px;
+    }
+
+
+    .hero__title {
+        font-size: 2.8rem;
+    }
+
+
+    /* APRESENTAÇÃO */
+
+    .apresentacao {
+        padding-top: 75px;
+        padding-bottom: 80px;
+    }
+
+
+    .apresentacao__imagem {
+        aspect-ratio: 16 / 9;
+
+        border-radius: 22px;
+    }
+
+
+    .apresentacao__texto h2 {
+        font-size: 2.15rem;
+    }
+
+
+    /* EQUIPE */
+
+    .equipe {
+        padding-top: 80px;
+        padding-bottom: 90px;
+    }
+
+
+    .equipe__titulo {
+        font-size: 2.15rem;
+
+        margin-bottom: 50px;
+    }
+
+
+    .motorista {
+        padding:
+            35px
+            32px
+            30px;
+    }
+
+
+    .motorista__foto {
+        width: 170px;
+        height: 170px;
+    }
+
+
+    .motorista__nome {
+        font-size: 1.35rem;
+    }
+
+
+    .motorista__bio,
+    .motorista__atendimento {
+        font-size: 0.94rem;
+    }
+
+
+    /* MAPA */
+
+    .mapa {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+
+
+    .mapa__iframe {
+        height: 370px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   768px+
+========================================================= */
+
+@media (min-width: 768px) {
+
+    :root {
+        --padding-mobile: 32px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: 550px;
+
+        background-position: center 60%;
+    }
+
+
+    .hero__overlay {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+
+
+    .hero__title {
+        font-size: 3.3rem;
+    }
+
+
+    .hero__title::before {
+        padding: 8px 16px;
+
+        font-size: 0.7rem;
+
+        letter-spacing: 2px;
+    }
+
+
+    /* APRESENTAÇÃO */
+
+    .apresentacao {
+        padding-top: 90px;
+        padding-bottom: 95px;
+    }
+
+
+    .apresentacao__container {
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 1.1fr)
+            minmax(280px, 0.9fr);
+
+        align-items: center;
+
+        gap: 50px;
+    }
+
+
+    .apresentacao__imagem {
+        height: 330px;
+
+        aspect-ratio: auto;
+    }
+
+
+    .apresentacao__texto {
+        padding-left: 24px;
+    }
+
+
+    /* EQUIPE */
+
+    .equipe {
+        padding-top: 90px;
+        padding-bottom: 105px;
+    }
+
+
+    .equipe__titulo {
+        font-size: 2.4rem;
+
+        margin-bottom: 60px;
+    }
+
+
+    .equipe__lista {
+        gap: 24px;
+    }
+
+
+    /* CARD */
+
+    .motorista {
+        display: grid;
+
+        grid-template-columns:
+            180px
+            minmax(0, 1fr);
+
+        align-items: center;
+
+        gap: 32px;
+
+        padding:
+            30px
+            32px;
+    }
+
+
+    .motorista::before {
+        top: 50%;
+        bottom: auto;
+        left: 0;
+
+        width: 4px;
+        height: 50px;
+
+        transform: translateY(-50%);
+
+        border-radius:
+            0
+            8px
+            8px
+            0;
+    }
+
+
+    .motorista__foto {
+        width: 180px;
+        height: 180px;
+
+        border-radius: 18px;
+    }
+
+
+    .motorista__info {
+        align-items: flex-start;
+    }
+
+
+    .motorista__nome {
+        text-align: left;
+
+        font-size: 1.35rem;
+
+        margin-bottom: 18px;
+    }
+
+
+    .motorista__nome::after {
+        margin-left: 0;
+    }
+
+
+    .motorista__bio,
+    .motorista__atendimento {
+        font-size: 0.91rem;
+
+        line-height: 1.7;
+    }
+
+
+    .botao-whatsapp {
+        width: auto;
+
+        min-width: 190px;
+
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+
+    /* MAPA */
+
+    .mapa {
+        padding-top: 90px;
+        padding-bottom: 90px;
+    }
+
+
+    .mapa::after {
+        font-size: 2.2rem;
+
+        margin-bottom: 35px;
+    }
+
+
+    .mapa__iframe {
+        height: 400px;
+
+        border-radius: 22px;
+    }
+}
+
+
+/* =========================================================
+   DESKTOP
+   1024px+
+========================================================= */
+
+@media (min-width: 1024px) {
+
+    /* HERO */
+
+    .hero {
+        min-height: 620px;
+
+        background-position: center 62%;
+    }
+
+
+    .hero__title {
+        font-size: clamp(
+            3.4rem,
+            5vw,
+            4.6rem
+        );
+
+        letter-spacing: -1.5px;
+    }
+
+
+    .hero__title::before {
+        margin-bottom: 24px;
+
+        padding:
+            9px
+            17px;
+
+        font-size: 0.76rem;
+
+        letter-spacing: 2.2px;
+    }
+
+
+    .hero__title::after {
+        width: 75px;
+        height: 4px;
+
+        margin-top: 30px;
+    }
+
+
+    /* APRESENTAÇÃO */
+
+    .apresentacao {
+        padding:
+            105px
+            30px
+            115px;
+    }
+
+
+    .apresentacao__container {
+        grid-template-columns:
+            minmax(0, 1.15fr)
+            minmax(320px, 0.85fr);
+
+        gap: 75px;
+    }
+
+
+    .apresentacao__imagem {
+        height: 410px;
+
+        border-radius: 26px;
+
+        transition:
+            transform 0.4s ease,
+            box-shadow 0.4s ease;
+    }
+
+
+    .apresentacao__imagem:hover {
+        transform: translateY(-6px);
+
+        box-shadow:
+            0 30px 70px
+            rgba(0, 42, 20, 0.20);
+    }
+
+
+    .apresentacao__texto {
+        padding-left: 32px;
+    }
+
+
+    .apresentacao__texto h2 {
+        font-size: 3rem;
+    }
+
+
+    .apresentacao__texto p {
+        font-size: 1.03rem;
+    }
+
+
+    /* EQUIPE */
+
+    .equipe {
+        padding:
+            105px
+            30px
+            120px;
+    }
+
+
+    .equipe__titulo {
+        margin-bottom: 70px;
+
+        font-size: 2.8rem;
+    }
+
+
+    .equipe__lista {
+        gap: 26px;
+    }
+
+
+    /* MOTORISTA */
+
+    .motorista {
+        grid-template-columns:
+            210px
+            minmax(0, 1fr);
+
+        gap: 40px;
+
+        padding:
+            34px
+            38px;
+
+        transition:
+            transform 0.35s ease,
+            border-color 0.35s ease,
+            background 0.35s ease,
+            box-shadow 0.35s ease;
+    }
+
+
+    .motorista:hover {
+        transform:
+            translateY(-5px);
+
+        border-color:
+            rgba(95, 226, 150, 0.27);
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255, 255, 255, 0.14),
+                rgba(255, 255, 255, 0.075)
+            );
+
+        box-shadow:
+            0 25px 60px
+            rgba(0, 0, 0, 0.22);
+    }
+
+
+    .motorista__foto {
+        width: 210px;
+        height: 210px;
+
+        transition:
+            transform 0.4s ease,
+            box-shadow 0.4s ease;
+    }
+
+
+    .motorista:hover
+    .motorista__foto {
+        transform: scale(1.025);
+
+        box-shadow:
+            0 20px 45px
+            rgba(0, 0, 0, 0.34);
+    }
+
+
+    .motorista__nome {
+        font-size: 1.45rem;
+    }
+
+
+    .motorista__bio,
+    .motorista__atendimento {
+        max-width: 830px;
+
+        font-size: 0.96rem;
+
+        line-height: 1.75;
+    }
+
+
+    .botao-whatsapp {
+        transition:
+            transform 0.25s ease,
+            filter 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+
+    .botao-whatsapp:hover {
+        transform:
+            translateY(-2px);
+
+        filter:
+            brightness(1.08);
+
+        box-shadow:
+            0 13px 30px
+            rgba(0, 0, 0, 0.27);
+    }
+
+
+    /* MAPA */
+
+    .mapa {
+        padding:
+            105px
+            30px;
+    }
+
+
+    .mapa::after {
+        font-size: 2.6rem;
+
+        margin-bottom: 40px;
+    }
+
+
+    .mapa__iframe {
+        height: 440px;
+
+        border-radius: 24px;
+    }
+
+
+    /* FOOTER */
+
+    .rodape {
+        min-height: 110px;
+    }
+
+
+    .rodape p {
+        font-size: 0.82rem;
+    }
+}
+
+
+/* =========================================================
+   DESKTOP GRANDE
+   1280px+
+========================================================= */
+
+@media (min-width: 1280px) {
+
+    .hero__overlay {
+        max-width: var(--largura);
+
+        margin: 0 auto;
+    }
+
+
+    .motorista {
+        padding:
+            36px
+            42px;
+    }
+}
+
+
+/* =========================================================
+   ACESSIBILIDADE
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
@@ -935,15 +1567,12 @@ a {
         scroll-behavior: auto;
     }
 
+
     *,
     *::before,
     *::after {
-        transition: none !important;
         animation: none !important;
-    }
-}
 
-/* Espaço entre o atendimento e o botão */
-.motorista__info .botao-whatsapp {
-    margin-top: 18px !important;
+        transition: none !important;
+    }
 }
